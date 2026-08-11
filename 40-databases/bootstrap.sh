@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dnf install -y mongodb-org
+dnf install ansible -y
