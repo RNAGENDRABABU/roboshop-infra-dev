@@ -20,3 +20,14 @@ resource "aws_iam_role" "mysql" {
         local.common_tags
     )
 }
+
+resource "aws_iam_policy" "mysql" {
+    name = "S3ReadOnlyAccessPolicy"
+    description = "A policy for MySQL Ec2 instance"
+    policy = file("mysql-iam-policy.json")
+}    
+
+resource "aws_iam_role_policy_attachment" "mysql" {
+    role       = aws_iam_role.mysql.name
+    policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
