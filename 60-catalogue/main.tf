@@ -36,3 +36,7 @@ resource "terraform_data" "catalogue" {
       ]
     }
 }
+
+action "aws_ec2_stop_instance" "catalogue" {
+  
+}
