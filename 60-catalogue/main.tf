@@ -44,7 +44,8 @@ resource "aws_ec2_instance_state" "catalogue" {
 }
 
 resource "aws_ami_from_instance" "catalogue" {
-  name               = "${var.project}-${var.environment}-catalogue"
+  # roboshop-dev-catalogue-v3-i
+  name               = "${var.project}-${var.environment}-catalogue-${var.app_version}-${aws_instance.catalogue.id}"
   source_instance_id = aws_instance.catalogue.id
   depends_on = [aws_ec2_instance_state.catalogue]  
   tags = merge(
